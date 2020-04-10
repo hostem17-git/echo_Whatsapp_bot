@@ -32,7 +32,7 @@ def sms_reply():
         rec=stat[5]
         c=c-1
         t=0
-        t+=count
+        t+=int(count)
        # if(c>=0):
          #   s +=  "--> " + country + "\n" +" total  "+ count + "\n"  + "death " + death+ "\n" + "rec " + rec + " \n <--"
           
