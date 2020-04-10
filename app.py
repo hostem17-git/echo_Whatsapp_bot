@@ -28,14 +28,17 @@ def sms_reply():
         stat=[i.text for i in td]
         country= stat[0]
         count=stat[1]
-        s+= country +" " + count +"\n"
         c=c-1
-        if(c==0):
-            break
+        if(c>=0):
+            s+= country +" " + count +"\n"
+         
+        if(country=="total" or country=="Total" or country=="India" or country=="India" ):
+            s+= country + " " +count + "\n"
+         
     resp = MessagingResponse()
     resp.message(s)
     return str(resp)
 
 if __name__ == "__main__":
-    app.run(debug=true)
+    app.run(debug=True)
     
