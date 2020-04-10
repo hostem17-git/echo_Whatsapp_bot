@@ -28,12 +28,18 @@ def sms_reply():
         stat=[i.text for i in td]
         country= stat[0]
         count=stat[1]
+        death= stat[3]
+        rec=stat[5]
         c=c-1
+        t=0
+        t+=count
         if(c>=0):
-            s+= country +" " + count +"\n"
+            s +=  "--> " + country + "\n" +" total  "+ count + "\n"  + "death " + death+ "\n" + "rec " + rec + " \n <--"
+          
+        if( country=="India" ):
+            s+= "--> " + country +"\n" +"total "+ count +"\n" +"death "+ death+"\n" +"rec "+ rec +"\n <--"
          
-        if(country=="total" or country=="Total" or country=="India" or country=="India" ):
-            s+= country + " " +count + "\n"
+        s+=" TOTAL "   +t + "\n"
          
     resp = MessagingResponse()
     resp.message(s)
