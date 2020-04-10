@@ -33,8 +33,8 @@ def sms_reply():
         c=c-1
         t=0
         t+=count
-        if(c>=0):
-            s +=  "--> " + country + "\n" +" total  "+ count + "\n"  + "death " + death+ "\n" + "rec " + rec + " \n <--"
+       # if(c>=0):
+         #   s +=  "--> " + country + "\n" +" total  "+ count + "\n"  + "death " + death+ "\n" + "rec " + rec + " \n <--"
           
         if( country=="India" ):
             s+= "--> " + country +"\n" +"total "+ count +"\n" +"death "+ death+"\n" +"rec "+ rec +"\n <--"
