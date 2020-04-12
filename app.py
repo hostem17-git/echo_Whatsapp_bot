@@ -1,11 +1,19 @@
+
 from bs4 import BeautifulSoup
 import requests
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
+
 
 html= requests.get('https://www.worldometers.info/coronavirus/#countries').text
 soup= BeautifulSoup(html,'lxml')
 
-from flask import Flask, request
-from twilio.twiml.messaging_response import MessagingResponse
+class data:
+    def __init__(self,total,death,recover):
+        self.total=total
+        self.death=death
+        self.recover=recover
+
 
 app = Flask(__name__)
 
@@ -21,8 +29,8 @@ def sms_reply():
     
     # Create reply
     table= soup.find('tbody')
-    s=" "
-    c=5
+    record
+    
     for row in table.find_all('tr'):
         td = row.find_all('td')
         stat=[i.text for i in td]
@@ -30,17 +38,8 @@ def sms_reply():
         count=stat[1]
         death= stat[3]
         rec=stat[5]
-        c=c-1
-        #t=0
-        #t+=int(count)
-        if(c>=0):
-            s +=  "--> " + country + "\n" +" total :  "+ count + "\n"  + "death : " + death+ "\n" + "rec : " + rec + " \n <--"
-          
-        if( country=="India" ):
-            s+= "--> " + country +"\n" +"total :"+ count +"\n" +"death : "+ death+"\n" +"rec : "+ rec +"\n <--"
-         
-        #s+=" TOTAL "   +t + "\n"
-         
+        record[country]=data(count,death,rec)
+    s= "total : " + record[msg].total + "/n" + "death : " + record[msg].death + "\n" + "recovered : " +  record[msg].recover
     resp = MessagingResponse()
     resp.message(s)
     return str(resp)
