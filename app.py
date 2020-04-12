@@ -29,7 +29,7 @@ def sms_reply():
     
     # Create reply
     table= soup.find('tbody')
-    record
+    record={}
     
     for row in table.find_all('tr'):
         td = row.find_all('td')
