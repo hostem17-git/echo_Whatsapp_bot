@@ -26,7 +26,7 @@ def sms_reply():
     """Respond to incoming calls with a simple text message."""
     # Fetch the message
     msg = request.form.get('Body')
-    
+    msg=msg.upper()
     # Create reply
     table= soup.find('tbody')
     record={}
@@ -38,8 +38,9 @@ def sms_reply():
         count=stat[1]
         death= stat[3]
         rec=stat[5]
+        country=country.upper()
         record[country]=data(count,death,rec)
-    s= "total : " + record[msg].total + "/n" + "death : " + record[msg].death + "\n" + "recovered : " +  record[msg].recover
+    s= "total : " + record[msg].total + "/n" + "death : " + record[msg].death + "/n" + "recovered : " +  record[msg].recover
     resp = MessagingResponse()
     resp.message(s)
     return str(resp)
