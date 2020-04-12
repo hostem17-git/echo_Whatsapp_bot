@@ -40,7 +40,7 @@ def sms_reply():
         rec=stat[5]
         country=country.upper()
         record[country]=data(count,death,rec)
-    s= "total : " + record[msg].total + "/n" + "death : " + record[msg].death + "/n" + "recovered : " +  record[msg].recover
+    s= "total : " + record[msg].total + "\n" + "death : " + record[msg].death + "\n" + "recovered : " +  record[msg].recover
     resp = MessagingResponse()
     resp.message(s)
     return str(resp)
